@@ -15,7 +15,7 @@ class AccessService {
   static signUp = async ({ name, email, password }) => {
     try {
       // step1: check email exist
-      const hodelShop = await shopModel.findOne({ email }).lean(); //lean query nhanh, giam tai size , tra ve mot object javascript thuan tuy
+      const hodelShop = await shopModel.findOne({ email }).lean(); //lean make query faster, less size , return object javascript 
       if (hodelShop) {
         return {
           code: "xxxx",
@@ -31,34 +31,11 @@ class AccessService {
       });
       // step2: if newShop created successful refresh token
       if (newShop) {
-        // // created privateKey, publicKey lv2
-        // const { privateKey, publicKey } = crypto.generateKeyPairSync("rsa", {
-        //   modulusLength: 4096,
-        //   publicKeyEncoding: {
-        //     type: 'pkcs1',  //public key CryptoGraphy Standards 1
-        //     format: 'pem',
-        //   },
-        //   privateKeyEncoding: {
-        //     type: 'pkcs1',  //public key CryptoGraphy Standards 1
-        //     format: 'pem',
-        //   },
-        // });
 
         // created privateKey, publicKey lv0
 
         const cryptoKey = crypto.randomBytes(64).toString('hex');
 
-
-        //console.log({ cryptoKey }); // save collection KeyStore
-
-        // // created privateKey, publicKey lv2
-        // const publicKeyString = await KeyTokenService.createKeyToken({
-        //   userId: newShop._id,
-        //   publicKey,
-        // });
-
-
-        // created privateKey, publicKey lv0
         const keyStore = await KeyTokenService.createKeyToken({
           userId: newShop._id,
           cryptoKey,
@@ -71,28 +48,6 @@ class AccessService {
             message: "cryptoKey error",
           };
         }
-
-        //lv2
-        // const publicKeyString = await KeyTokenService.createKeyToken({
-        //   userId: newShop._id,
-        //   publicKey,
-        // });
-
-
-        // if (!publicKeyString) {
-        //   return {
-        //     code: "xxxx",
-        //     message: "publicKeyString error",
-        //   };
-        // }
-
-        // const publicKeyObject = crypto.createPublicKey(publicKeyString);
-        // console.log(`publicKeyObject::`, publicKeyObject);
-
-        // // created token pair
-        // const tokens = await createTokenPair({userId: newShop._id, email }, publicKeyString, privateKey);
-        // console.log(`Created Token Success::`, tokens);
-
 
 
         // created token pair

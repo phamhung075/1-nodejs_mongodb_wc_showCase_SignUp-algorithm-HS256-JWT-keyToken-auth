@@ -1,8 +1,8 @@
 const RoleShop = {
-    SHOP: 'SHOP',
-    WRITTER : 'WRITER', //Binh thuong chi ghi bang so
-    EDITOR : 'EDITOR',
-    ADMIN : 'ADMIN',
+    SHOP: 4 ,// 'SHOP',   
+    WRITTER : 3 ,// 'WRITER', 
+    EDITOR : 2 ,// 'EDITOR',  
+    ADMIN : 1 // 'ADMIN',   
 }
 
 module.exports = RoleShop;
