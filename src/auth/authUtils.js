@@ -10,7 +10,6 @@ const createTokenPair = async ( payload, cryptoKey ) => {
             expiresIn: '2 days'
         }); 
         //payload: contains shipping information transferred from this system to another system via a token
-        //privateKey: not stored in the database, occurs only once during signing -> then passed to the browser
         const refreshToken = await JWT.sign( payload, cryptoKey, {
             //algorithm: 'RS256', //lv2
             expiresIn: '7 days'
