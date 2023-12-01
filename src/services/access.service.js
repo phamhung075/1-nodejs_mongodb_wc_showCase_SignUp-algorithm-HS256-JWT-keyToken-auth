@@ -34,11 +34,14 @@ class AccessService {
 
         // created privateKey, publicKey lv0
 
-        const cryptoKey = crypto.randomBytes(64).toString('hex');
+        const publicKey = crypto.randomBytes(64).toString('hex');
+        const privateKey = crypto.randomBytes(64).toString('hex');
+
 
         const keyStore = await KeyTokenService.createKeyToken({
           userId: newShop._id,
-          cryptoKey,
+          publicKey,
+          privateKey
         });
 
 
@@ -51,7 +54,7 @@ class AccessService {
 
 
         // created token pair
-        const tokens = await createTokenPair({userId: newShop._id, email }, cryptoKey);
+        const tokens = await createTokenPair({userId: newShop._id, email }, publicKey, privateKey );
         console.log(`Created Token Success::`, tokens);
 
         return {
