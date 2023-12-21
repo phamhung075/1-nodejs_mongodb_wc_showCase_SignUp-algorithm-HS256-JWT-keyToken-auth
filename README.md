@@ -1,5 +1,7 @@
 ## Introduction
 
+This is a personal project created based on the series of lessons by @anonystick (https://github.com/anonystick).
+
 This project, `nodejs_mongodb_wc_showCase_auth_HS256`, is a Node.js application that showcases user authentication and data management using MongoDB. It utilizes the HS256 algorithm for secure authentication.
 
 ## Installation
