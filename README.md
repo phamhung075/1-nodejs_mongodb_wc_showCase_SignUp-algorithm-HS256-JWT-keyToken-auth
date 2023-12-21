@@ -117,4 +117,4 @@ Content-Type: application/json
 }
 ```
 
-For more detailed examples, refer to see [README.png](./README.png).
+For more detailed examples, refer to see [README.png](./help01-hs256.png).
